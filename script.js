@@ -15,4 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
             input.value = '';                        // очищаем поле
         }
     });
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            const taskText = input.value.trim(); // убираем лишние пробелы
+
+            if (taskText !== '') {
+                const li = document.createElement('li'); // создаём <li>
+                li.textContent = taskText;               // вставляем текст
+                list.appendChild(li);                    // добавляем в список
+                input.value = '';                        // очищаем поле
+            }
+        }
+    });
 });
