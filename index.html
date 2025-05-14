@@ -1,67 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Classwork DOM 14-10</title>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-<h1>Title 1</h1>
-<h2>Title 2</h2>
-<h3>Title 3</h3>
+<h2>To-Do List</h2>
 
-<p class="intro">This is the first paragraph.</p>
-<p class="content">This is the second paragraph.</p>
-<p class="summary">This is the third paragraph.</p>
-<p id="copyright">(C) JAVA 61 </p>
+<input type="text" id="taskInput" placeholder="Input task..." />
+<button onclick="alert('click')">Добавить</button>
 
-<script>
-  // TODO: head to console
-  console.log(document.head);
-  // TODO: find and print to console all <h1>, <h2>, <h3>
-  for (let i = 1; i <= 6; i++) {
-    const tagName = 'h' + i; // create string
-    const elements = document.getElementsByTagName(tagName);
-    console.log(elements.length)
-    for (let j = 0; j < elements.length; j++) {
-      console.log(`Нашёл тег <${tagName}>:`, elements[j]);
-    }
-  }
+<ul id="taskList">
+    <!-- Here the user will add tasks -->
+</ul>
 
-  // TODO: find and print to console all <p> with all classes
-  // const paragraphsWithClass = document.getElementsByTagName('p[class]');
-  //console.log(paragraphsWithClass);
-  const paragraphs = document.getElementsByTagName('p');
-  const withClass = Array.from(paragraphs).filter(p => p.classList.length > 0);
-  withClass.forEach(p => console.log(p));
-
-  // TODO: find and print to console all <p> with summary and content class
-  const filtered = Array.from(paragraphs).filter(p =>
-          p.classList.contains('summary') || p.classList.contains('content')
-  );
-  filtered.forEach(p => console.log(p));
-
-  // TODO: find and print to console <p> with id and change it to YOUR NAME
-  const copyright = document.getElementById('copyright');
-  const username = prompt('Введите ваше имя:');
-  if (username && username.trim() !== '') {
-    copyright.textContent = `(c) ${username}`;
-    copyright.style.color = 'darkblue';
-  } else {
-    copyright.textContent = `(c) Аноним`;
-    copyright.style.color = 'red';
-  }
-  //TODO Переместить элемент <h1> перед параграфом с классом intro и добавить в intro дополнительный шаблонный текст.
-  //TODO Переместить элемент <h2> перед параграфом с классом content и добавить в content дополнительный шаблонный текст.
-  const h1 = document.querySelector('h1');
-  const h2 = document.querySelector('h2');
-  const intro = document.querySelector('.intro');
-  const content = document.querySelector('.content');
-  intro.parentNode.insertBefore(h1, intro);
-  intro.textContent += ` This paragraph was updated with additional information from the heading.`;
-  content.parentNode.insertBefore(h2, content);
-  content.textContent = `Prepended: ${h2.textContent}. ` + content.textContent;
-  const h3 = document.querySelector('h3');
-  h3.remove();
-</script>
 </body>
 </html>
