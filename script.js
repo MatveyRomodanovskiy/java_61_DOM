@@ -1,13 +1,18 @@
+// Ждём, когда всё загрузится
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('taskInput');       // поле ввода
+    const list = document.getElementById('taskList');         // список задач
+    const button = document.getElementById('addButton');      // кнопка
 
-function addTask() {
-    const input = document.getElementById('taskInput');
-    const list = document.getElementById('taskList');
-    const taskText = input.value.trim();
+    // Навешиваем обработчик клика на кнопку
+    button.addEventListener('click', () => {
+        const taskText = input.value.trim(); // убираем лишние пробелы
 
-    if (taskText !== '') {
-        const li = document.createElement('li');
-        li.textContent = taskText;
-        list.appendChild(li);
-        input.value = '';
-    }
-}
+        if (taskText !== '') {
+            const li = document.createElement('li'); // создаём <li>
+            li.textContent = taskText;               // вставляем текст
+            list.appendChild(li);                    // добавляем в список
+            input.value = '';                        // очищаем поле
+        }
+    });
+});
