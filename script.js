@@ -12,6 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (taskText !== '') {
             const li = document.createElement('li'); // создаём <li>
             li.textContent = taskText;               // вставляем текст
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = '\u274C';
+            deleteBtn.style.marginLeft = '10px';
+
+            // Вешаем обработчик на кнопку
+            deleteBtn.addEventListener('click', () => {
+                list.removeChild(li); // удаляем задачу из списка
+            });
+
+            // Добавляем кнопку внутрь li
+            li.appendChild(deleteBtn);
             list.appendChild(li);                    // добавляем в список
             input.value = '';                        // очищаем поле
         }
